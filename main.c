@@ -366,7 +366,7 @@ int main() {
                 newYear();
                 break;
             case 5:
-                printf("\n HA SELECCIONADO LA OPCION 5: Llenar caracteres \n\nIngrese u oracion una palabra para insertarle un caracter\n");
+                printf("\n HA SELECCIONADO LA OPCION 5: Llenar caracteres \n\nIngrese una palabra u oracion una palabra para insertarle un caracter\n");
                 fgets(words,500,stdin );
                 printf("\nIngrese el caracter que quiere ingresar en la cadena\n");
                 scanf("%c",&x);
