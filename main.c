@@ -87,6 +87,31 @@ void intersect(char words[500], char words2[500]) {
 
 }
 
+void deleteRepeats(){
+    int size;//TAMANHO DEL TEXTO
+    char chainWords[20],aux;
+    printf("HA SELECCIONADO LA OPCION 8 : Eliminar repetidos\n");
+    printf("POR FAVOR INGRESE UNA CADENA\n");
+    fflush(stdin);
+    fgets(chainWords, 20, stdin);
+    size = strlen(chainWords);//DEVUELVE LA LONGITUD DE UNA CADENA DE TEXTO
+
+    for (int i = 0; i < size; ++i) {//RECORREMOS EL TAMANHO DE LA CADENA
+        for (int j = 0; j < size - 1; ++j) {//RECORREMOS EL TAMANHO DE LA CADENA MENOS UNO
+            if(i != j){//COMPARAMOS SI LA PRIMERA POSICION Y LA SEGUNDA SON DIFERENTES
+                if(chainWords[i] == chainWords[j]){//COMPARAMOS SI EL CARACTER EN LA POSICION J ES IGUAL AL DE LA POSICION I
+                    //SE "VACIA" LA CADENA EN ESA POSICION"
+                    chainWords[j] = ' ';
+                }
+            }
+        }
+
+    }
+    for (int i = 0; i < size ; ++i) {
+        printf("%c", chainWords[i]);
+    }
+
+}
 int main() {
     int opc=0;
     while(opc!=11){
@@ -115,14 +140,14 @@ int main() {
             case 2:
                 break;
             case 3:
-                printf("\n HA SELECCIONADO LA OPCION 3: contar vocales \n\nIngrese una palabra u oracion para contar las vocales\n");
+                printf("\n HA SELECCIONADO LA OPCION 3: Contar vocales \n\nIngrese una palabra u oracion para contar las vocales\n");
                 fgets(words,500,stdin );
                 countVowels(words);
                 break;
             case 4:
                 break;
             case 5:
-                printf("\n HA SELECCIONADO LA OPCION 5: llenar caracteres \n\nIngrese u oracion una palabra para insertarle un caracter\n");
+                printf("\n HA SELECCIONADO LA OPCION 5: Llenar caracteres \n\nIngrese u oracion una palabra para insertarle un caracter\n");
                 fgets(words,500,stdin );
                 printf("\nIngrese el caracter que quiere ingresar en la cadena\n");
                 scanf("%c",&x);
@@ -134,20 +159,21 @@ int main() {
                 fillCharac(words,x,y,strcmp("derecha",x1)==0?1:0);
                 break;
             case 6:
-                printf("\n HA SELECCIONADO LA OPCION 6: borrar caracteres \n\nIngrese una palabra u oracion para eliminarle un caracter especifico\n");
+                printf("\n HA SELECCIONADO LA OPCION 6: Borrar caracteres \n\nIngrese una palabra u oracion para eliminarle un caracter especifico\n");
                 fgets(words,500,stdin );
                 printf("\nIngrese el caracter que quiere eliminar en la cadena\n");
                 scanf("%c",&x);
                 deleteCharac(words,x);
                 break;
             case 7:
-                printf("\n HA SELECCIONADO LA OPCION 7: interseccion \n\nIngrese una palabra u oracion para ver que letras tienen en comun con otra cadena\n");
+                printf("\n HA SELECCIONADO LA OPCION 7: Interseccion \n\nIngrese una palabra u oracion para ver que letras tienen en comun con otra cadena\n");
                 fgets(words,500,stdin );
                 printf("\nIngrese la otra palabra u oracion\n");
                 fgets(words2,500,stdin );
                 intersect(words,words2);
                 break;
             case 8:
+                deleteRepeats();
                 break;
             case 9:
                 break;
