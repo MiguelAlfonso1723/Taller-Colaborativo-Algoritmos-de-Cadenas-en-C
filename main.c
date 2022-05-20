@@ -1,7 +1,87 @@
 #include <stdio.h>
 #include <string.h>
+//MENU
+void askMenu(){
+    printf("\n---MENU TALLER COLABORATIVO"
+           "ELIJA LA OPCION DESEADA\n"
+           "1. Convertir en nombre propio el contenido de una cadena\n"
+           "2. Buscar cadenas de caracteres\n"
+           "3. Contar vocales\n"
+           "4. Anho nuevo\n"
+           "5. Llenar caracteres\n"
+           "6. Borrar caracteres\n"
+           "7. Interseccion\n"
+           "8. Eliminar repetidos\n"
+           "9. Dezplazamiento\n"
+           "10. Validar direccion de correo electronico\n"
+           "11. Salir\n");
+}
+//
+//1. NAME
+void propName() {
+    int num;
+    char chain[250];
+    char *p = chain;
+    printf("HA SELECCIONADO LA OPCION 1 : Convertir en nombre propio una cadena\n");
+    printf("Digite la cadena a convertir\n");
+    fflush(stdin);
+    fgets(chain, 250, stdin);
+    num = strlen(chain);
+    while (*p != 0) {
+        if (p == chain || (*p != ' ' && *(p - 1) == ' '))
+            if (*p >= 'a' && *p <= 'z')
+                *p = *p - ('a' - 'A');
+        p++;
+    }
+    printf("\nSalida: %s ", chain);
+}
+//------
 
-//COUNT VOWELS
+//2. SEARCH CHAINS
+void searchChains() {
+
+    char cr[80] = "";
+    char pt[80] = "";
+    char aux[80];
+    short int cont = 0;
+    short int a = 0;
+    short int b = 0;
+
+    printf("HA SELECCIONADO LA OPCION 2 : Buscar cadena de caracteres\n");
+    printf("\nBuscar cadena de caracteres\n");
+    printf("Inserte una cadena de caracteres separada:\n");
+    gets(cr);
+    printf("Inserte la palabra a buscar:\n");
+    gets(aux);
+
+    while (cr[a] != 0) {
+        if (cr[a] == ' ' || cr[a] == ',' || cr[a] == '.') {
+            if (strcmp(pt, aux) == 0) {
+                ++cont;
+            }
+            for (b = 0; b < 80; b++) {
+                pt[b] = 0;
+            }
+            b = 0;
+        } else {
+            pt[b] = cr[a];
+            ++b;
+        }
+        a++;
+    }
+    if (strcmp(pt, aux) == 0) {
+        cont++;
+    }
+    if (cont == 0) {
+        printf("La palabra %s no existe.", aux);
+    } else {
+        printf("La palabra %s se encuentra %d veces.\n", aux, cont);
+    }
+
+}
+//-------------
+
+//3.COUNT VOWELS
 void countVowels(char words[500]) {
     char wordss[500] ;
     strcpy(wordss,words);
@@ -18,8 +98,52 @@ void countVowels(char words[500]) {
     printf("\n\nEl texto: %sTiene en TOTAL.\nVocales: %d\n#a: %d\n#e: %d\n#i: %d\n#o: %d\n#u: %d \n\n",words,vowels,vowel_a,vowel_e,vowel_i,vowel_o,vowel_u);
 
 }
-//
-//FILL CHARAC
+//--------
+
+//4.NEW YEAR
+void newYear(){
+    printf("HA SELECCIONADO LA OPCION 4 : Anho nuevo\n");
+    int n;
+    int d;
+    int i;
+    int tr;
+    int res;
+    int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    tr = 0;
+    res = 0;
+
+    do
+    {
+        printf ("\nDigite un mes del 1 al 12: " );
+        scanf ( "%d", &n );
+    } while ( n < 1 || n > 12 );
+
+    do
+    {
+        printf ( "Elige un dia del 1 al 31: " );
+        scanf ( "%d", &d );
+    } while ( ((n==1||n==3||n==5||n==7||n==8||n==10||n==12))&&(d>31)||(n==4||n==6||n==9||n==11)&&(d>30)||((n==2)&&(d>28))||(d<1) );
+
+    for ( i = 0; i < (n - 1); i++ )
+    {
+        tr += days[i];
+    }
+
+    tr += d;
+    res = (365 - tr);
+    int horas = res*(24/1);
+    int minutos = res*(24/1)*(60/1);
+
+    printf("Restan:\n");
+    printf("Dias: %d horas : %d Minutos : %d ", res,horas,minutos);
+    printf("para anio nuevo.");
+
+
+}
+//------
+
+//5.FILL CHARAC
 void fillCharac(char words[500], char x, int y, int rl) {
     char wordss[500] ;
     char aux[1];
@@ -36,8 +160,9 @@ void fillCharac(char words[500], char x, int y, int rl) {
     }
     printf("\n\nAl texto: %sSe le insertara el caracter |%c| en la posicion %d de %s quedando de la siguiente manera:%s\n\n",words,x,y,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
 }
-//
-//DELETE CHARAC
+//---------
+
+//6.DELETE CHARAC
 void deleteCharac(char words[500], char x) {
     char wordss[500] = {} ;
     char x1[]={x};
@@ -55,8 +180,9 @@ void deleteCharac(char words[500], char x) {
     printf("\n\nEl texto: %sSe le retiraron todos los caracteres |%c|, quedando de la siguiente manera:%s\n\n",words,x,wordss);
 
 }
-//
-//INTERSECT
+//--------
+
+//7.INTERSECT
 void intersect(char words[500], char words2[500]) {
     char wordss[500];
     strlwr(words);
@@ -89,13 +215,14 @@ void intersect(char words[500], char words2[500]) {
     }
 
 }
-//
-//DELETE REPEATS
+//--------
+
+//8.DELETE REPEATS
 void deleteRepeats(){
     int size;//TAMANHO DEL TEXTO
     char chainWords[20],aux;
     printf("HA SELECCIONADO LA OPCION 8 : Eliminar repetidos\n");
-    printf("POR FAVOR INGRESE UNA CADENA\n");
+    printf("Por favor, ingrese una cadena\n");
     fflush(stdin);
     fgets(chainWords, 20, stdin);
     size = strlen(chainWords);//DEVUELVE LA LONGITUD DE UNA CADENA DE TEXTO
@@ -116,8 +243,13 @@ void deleteRepeats(){
     }
 
 }
-//
-//VALIDATE MAIL
+//------
+
+//9. DISPLACEMENT
+
+//----
+
+//10.VALIDATE MAIL
 int validateFirstParams(char chainWords[20]) {
     int z = strlen(chainWords);
     char atSing;
@@ -186,7 +318,7 @@ int validateParams(char chainWords[20]){
 void validateMail(){
     char chainWords[20];
     printf("HA SELECCIONADO LA OPCION 10 : Validar correo electronico\n");
-    printf("POR FAVOR INGRESE UN CORREO ELECTRONICO\n");
+    printf("Por favor ingrese una cadena de caracteres\n");
     printf("EL CORREO DEBE CONTENER\n"
            "\n1. UN @"
            "\n2.UN PUNTO '.'"
@@ -205,7 +337,7 @@ void validateMail(){
         printf("ERROR");
     }
 }
-//
+//---
 
 int main() {
     int opc=0;
@@ -215,24 +347,15 @@ int main() {
         char x;
         char x1[10];
         int y;
-        printf("\n-------------------- MENU --------------------\n"
-               "1. Convertir en nombre propio el contenido de una cadena.\n"
-               "2. Buscar cadenas de caracteres.\n"
-               "3. Contar vocales.\n"
-               "4. A%co nuevo.\n"
-               "5. Llenar caracteres.\n"
-               "6. Borrar caracteres.\n"
-               "7. Interseccion.\n"
-               "8. Eliminar repetidos.\n"
-               "9. Dezplazamiento.\n"
-               "10. Validar direccion de correo electronico.\n"
-               "11. Salir\n", 164);
+        askMenu();
         scanf("%d",&opc);
         fflush(stdin);
         switch (opc) {
             case 1:
                 break;
+                propName();
             case 2:
+                searchChains();
                 break;
             case 3:
                 printf("\n HA SELECCIONADO LA OPCION 3: Contar vocales \n\nIngrese una palabra u oracion para contar las vocales\n");
@@ -240,6 +363,7 @@ int main() {
                 countVowels(words);
                 break;
             case 4:
+                newYear();
                 break;
             case 5:
                 printf("\n HA SELECCIONADO LA OPCION 5: Llenar caracteres \n\nIngrese u oracion una palabra para insertarle un caracter\n");
