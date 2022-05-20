@@ -2,19 +2,19 @@
 #include <string.h>
 //MENU
 void askMenu(){
-    printf("\n---MENU TALLER COLABORATIVO"
+    printf("\n-------------------- MENU TALLER COLABORATIVO --------------------\n"
            "ELIJA LA OPCION DESEADA\n"
            "1. Convertir en nombre propio el contenido de una cadena\n"
            "2. Buscar cadenas de caracteres\n"
            "3. Contar vocales\n"
-           "4. Anho nuevo\n"
+           "4. A%co nuevo\n"
            "5. Llenar caracteres\n"
            "6. Borrar caracteres\n"
            "7. Interseccion\n"
            "8. Eliminar repetidos\n"
            "9. Dezplazamiento\n"
            "10. Validar direccion de correo electronico\n"
-           "11. Salir\n");
+           "11. Salir\n", 164);
 }
 //
 //1. NAME
