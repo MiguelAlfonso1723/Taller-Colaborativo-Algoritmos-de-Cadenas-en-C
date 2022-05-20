@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-
+//COUNT VOWELS
 void countVowels(char words[500]) {
     char wordss[500] ;
     strcpy(wordss,words);
@@ -18,7 +18,8 @@ void countVowels(char words[500]) {
     printf("\n\nEl texto: %sTiene en TOTAL.\nVocales: %d\n#a: %d\n#e: %d\n#i: %d\n#o: %d\n#u: %d \n\n",words,vowels,vowel_a,vowel_e,vowel_i,vowel_o,vowel_u);
 
 }
-
+//
+//FILL CHARAC
 void fillCharac(char words[500], char x, int y, int rl) {
     char wordss[500] ;
     char aux[1];
@@ -35,7 +36,8 @@ void fillCharac(char words[500], char x, int y, int rl) {
     }
     printf("\n\nAl texto: %sSe le insertara el caracter |%c| en la posicion %d de %s quedando de la siguiente manera:%s\n\n",words,x,y,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
 }
-
+//
+//DELETE CHARAC
 void deleteCharac(char words[500], char x) {
     char wordss[500] = {} ;
     char x1[]={x};
@@ -53,7 +55,8 @@ void deleteCharac(char words[500], char x) {
     printf("\n\nEl texto: %sSe le retiraron todos los caracteres |%c|, quedando de la siguiente manera:%s\n\n",words,x,wordss);
 
 }
-
+//
+//INTERSECT
 void intersect(char words[500], char words2[500]) {
     char wordss[500];
     strlwr(words);
@@ -86,7 +89,8 @@ void intersect(char words[500], char words2[500]) {
     }
 
 }
-
+//
+//DELETE REPEATS
 void deleteRepeats(){
     int size;//TAMANHO DEL TEXTO
     char chainWords[20],aux;
@@ -112,6 +116,97 @@ void deleteRepeats(){
     }
 
 }
+//
+//VALIDATE MAIL
+int validateFirstParams(char chainWords[20]) {
+    int z = strlen(chainWords);
+    char atSing;
+    char dot;
+    int eval=0;
+    for (int i = 0; i < z; i++) {
+        dot = strchr(chainWords, '@');
+        if (dot != NULL) {
+            eval = 1;
+        }
+    }
+    for (int i = 0; i < z; i++) {
+        atSing = strchr(chainWords, '.');
+        if (atSing != NULL) {
+            eval = 1;
+        }
+    }
+    return eval;
+}
+int validateParams(char chainWords[20]){
+    int z = strlen(chainWords);
+    char letterC;
+    char letterO;
+    char letterM;
+    int eval=0;
+    for (int i = 0; i < z; i++) {
+        letterC = strchr(chainWords, 'c');
+        if (letterC != NULL) {
+            letterO = strchr(chainWords, 'o');
+            if (letterO != NULL) {
+                letterM = strchr(chainWords, 'm');
+                if (letterM != NULL) {
+                    eval=1;
+                }
+            }
+        }
+    }
+    char letterU;
+    char letterS;
+    for (int i = 0; i < z; i++) {
+        letterU = strchr(chainWords, 'u');
+        if (letterU != NULL) {
+            letterS = strchr(chainWords, 's');
+            if (letterS != NULL) {
+                eval =1;
+            }
+        }
+    }
+    char letterCO;
+    char letterOL;
+    char letterL;
+    for (int i = 0; i < z; i++) {
+        letterCO = strchr(chainWords, 'c');
+        if (letterCO != NULL) {
+            letterOL = strchr(chainWords, 'o');
+            if (letterOL != NULL) {
+                letterL = strchr(chainWords, 'l');
+                if (letterL != NULL) {
+                    eval=1;
+                }
+            }
+        }
+    }
+    return eval;
+}
+void validateMail(){
+    char chainWords[20];
+    printf("HA SELECCIONADO LA OPCION 10 : Validar correo electronico\n");
+    printf("POR FAVOR INGRESE UN CORREO ELECTRONICO\n");
+    printf("EL CORREO DEBE CONTENER\n"
+           "\n1. UN @"
+           "\n2.UN PUNTO '.'"
+           "\n3.LA PALABRA 'com' - 'us' - 'col'"
+           "\n FORMATO "
+           "\n ####@####.com\n");
+    fflush(stdin);
+    char *aux = fgets(chainWords, 20, stdin);
+    if (validateFirstParams(aux) == 1){
+        if (validateParams(aux) == 1){
+            printf("CORREO VALIDO");
+        }else{
+            printf("ERROR");
+        }
+    }else{
+        printf("ERROR");
+    }
+}
+//
+
 int main() {
     int opc=0;
     while(opc!=11){
@@ -178,11 +273,13 @@ int main() {
             case 9:
                 break;
             case 10:
+                validateMail();
                 break;
             case 11:
+                printf("GRACIAS POR UTILIZAR NUESTRO PROGRAMA\n");
                 break;
             default:
-                printf("\n\nERROR OPCION ERRONEA INTENTE NUEVAMENTE\n\n");
+                printf("\n\nERROR OPCION ERRONEA, INTENTE NUEVAMENTE\n\n");
                 break;
         }
 
