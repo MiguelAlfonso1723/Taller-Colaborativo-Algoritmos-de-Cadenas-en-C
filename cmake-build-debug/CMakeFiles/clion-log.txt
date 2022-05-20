@@ -1,0 +1,4 @@
+C:\Users\PERSONAL\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\221.5591.52\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/Mingw64/mingw64/bin/mingw32-make.exe" "-DCMAKE_C_COMPILER=C:/Program Files/Mingw64/mingw64/bin/gcc.exe" "-DCMAKE_CXX_COMPILER=C:/Program Files/Mingw64/mingw64/bin/g++.exe" -G "CodeBlocks - MinGW Makefiles" -S C:\Users\PERSONAL\CLionProjects\Count_Vowels -B C:\Users\PERSONAL\CLionProjects\Count_Vowels\cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/PERSONAL/CLionProjects/Count_Vowels/cmake-build-debug
