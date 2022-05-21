@@ -2,6 +2,7 @@
 #include <string.h>
 //MENU
 void askMenu(){
+    fflush(stdin);
     printf("\n-------------------- MENU TALLER COLABORATIVO --------------------\n"
            "ELIJA LA OPCION DESEADA\n"
            "1. Convertir en nombre propio el contenido de una cadena\n"
