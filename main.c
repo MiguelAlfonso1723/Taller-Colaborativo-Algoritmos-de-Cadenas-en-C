@@ -22,16 +22,19 @@ void propName() {
     int num;
     char chain[250];
     char *p = chain;
-    printf("HA SELECCIONADO LA OPCION 1 : Convertir en nombre propio una cadena\n");
+    printf("\nHA SELECCIONADO LA OPCION 1 : Convertir en nombre propio una cadena\n\n");
     printf("Digite la cadena a convertir\n");
     fflush(stdin);
     fgets(chain, 250, stdin);
     num = strlen(chain);
     while (*p != 0) {
-        if (p == chain || (*p != ' ' && *(p - 1) == ' '))
-            if (*p >= 'a' && *p <= 'z')
+        if (p == chain || (*p != ' ' && *(p - 1) == ' ')) {
+            if (*p >= 'a' && *p <= 'z') {
                 *p = *p - ('a' - 'A');
+            }
+        }
         p++;
+
     }
     printf("\nSalida: %s ", chain);
 }
@@ -47,7 +50,7 @@ void searchChains() {
     short int a = 0;
     short int b = 0;
 
-    printf("HA SELECCIONADO LA OPCION 2 : Buscar cadena de caracteres\n");
+    printf("\nHA SELECCIONADO LA OPCION 2 : Buscar cadena de caracteres\n\n");
     printf("\nBuscar cadena de caracteres\n");
     printf("Inserte una cadena de caracteres separada:\n");
     gets(cr);
@@ -102,7 +105,7 @@ void countVowels(char words[500]) {
 
 //4.NEW YEAR
 void newYear(){
-    printf("HA SELECCIONADO LA OPCION 4 : Anho nuevo\n");
+    printf("\nHA SELECCIONADO LA OPCION 4 : A%co nuevo\n\n",164);
     int n;
     int d;
     int i;
@@ -121,7 +124,7 @@ void newYear(){
 
     do
     {
-        printf ( "Elige un dia del 1 al 31: " );
+        printf ( "\nElige un dia del 1 al 31: " );
         scanf ( "%d", &d );
     } while ( ((n==1||n==3||n==5||n==7||n==8||n==10||n==12))&&(d>31)||(n==4||n==6||n==9||n==11)&&(d>30)||((n==2)&&(d>28))||(d<1) );
 
@@ -136,8 +139,8 @@ void newYear(){
     int minutos = res*(24/1)*(60/1);
 
     printf("Restan:\n");
-    printf("Dias: %d horas : %d Minutos : %d ", res,horas,minutos);
-    printf("para anio nuevo.");
+    printf("Dias: %d \nhoras : %d \nMinutos : %d ", res,horas,minutos);
+    printf("para a%co nuevo.\n\n",164);
 
 
 }
@@ -158,7 +161,7 @@ void fillCharac(char words[500], char x, int y, int rl) {
         }
         wordss[i+cont]=words[i];
     }
-    printf("\n\nAl texto: %sSe le insertara el caracter |%c| en la posicion %d de %s quedando de la siguiente manera:%s\n\n",words,x,rl==1?-y+strlen(words)-1:y+1,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
+    printf("\n\nAl texto: %sSe le insertara el caracter |%c| en la posicion %d de %s quedando de la siguiente manera:\n%s\n\n",words,x,rl==1?-y+strlen(words)-1:y+1,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
 }
 //---------
 
@@ -210,6 +213,7 @@ void intersect(char words[500], char words2[500]) {
                 printf("||%c||, ", wordss[i]);
             }
         }
+        printf("\n%s",wordss);
     }else{
         printf("\n\nEn los textos: \n1.%s 2.%sNo tienen letras en comun",words,words2);
     }
@@ -221,7 +225,7 @@ void intersect(char words[500], char words2[500]) {
 void deleteRepeats(){
     int size;//TAMANHO DEL TEXTO
     char chainWords[20],aux;
-    printf("HA SELECCIONADO LA OPCION 8 : Eliminar repetidos\n");
+    printf("\nHA SELECCIONADO LA OPCION 8 : Eliminar repetidos\n\n");
     printf("Por favor, ingrese una cadena\n");
     fflush(stdin);
     fgets(chainWords, 20, stdin);
@@ -252,16 +256,19 @@ void displaceCharac(char words[500], int y, int y1, int rl) {
     int cont2=0;
     int aux;
     int ind=y1;
+    printf("1hola");
     if(((strlen(words)-1)>=y)&&(y>=0)){
         while(ind>=(strlen(words)-1)){
             ind=ind-(strlen(words)-1);
         }
+        printf("2hola");
         if(rl==1){
             aux=y>=ind?y-ind:((strlen(words)-1)-(ind-y));
         }else{
             aux=ind+y<(strlen(words)-1)?y+ind:((strlen(words)-1)-(ind+y));
         }
         printf("%d",aux);
+        printf("3hola");
         for (int i = 0; i < strlen(words); ++i) {
             if(i==aux){
                 wordss[i]=words[y];
@@ -348,7 +355,7 @@ int validateParams(char chainWords[20]){
 }
 void validateMail(){
     char chainWords[20];
-    printf("HA SELECCIONADO LA OPCION 10 : Validar correo electronico\n");
+    printf("\nHA SELECCIONADO LA OPCION 10 : Validar correo electronico\n\n");
     printf("Por favor ingrese una cadena de caracteres\n");
     printf("EL CORREO DEBE CONTENER\n"
            "\n1. UN @"
@@ -360,12 +367,12 @@ void validateMail(){
     char *aux = fgets(chainWords, 20, stdin);
     if (validateFirstParams(aux) == 1){
         if (validateParams(aux) == 1){
-            printf("CORREO VALIDO");
+            printf("\nCORREO VALIDO\n");
         }else{
-            printf("ERROR");
+            printf("\nERROR\n");
         }
     }else{
-        printf("ERROR");
+        printf("\nERROR\n");
     }
 }
 //---
