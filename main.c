@@ -246,7 +246,41 @@ void deleteRepeats(){
 //------
 
 //9. DISPLACEMENT
+void displaceCharac(char words[500], int y, int y1, int rl) {
+    char wordss[500];
+    int cont=0;
+    int cont2=0;
+    int aux;
+    int ind=y1;
+    printf("1hola");
+    if(((strlen(words)-1)>=y)&&(y>=0)){
+        while(ind>=(strlen(words)-1)){
+            ind=ind-(strlen(words)-1);
+        }
+        printf("2hola");
+        if(rl==1){
+            aux=y>=ind?y-ind:((strlen(words)-1)-(ind-y));
+        }else{
+            aux=ind+y<(strlen(words)-1)?y+ind:((strlen(words)-1)-(ind+y));
+        }
+        printf("%d",aux);
+        printf("3hola");
+        for (int i = 0; i < strlen(words); ++i) {
+            if(i==aux){
+                wordss[i]=words[y];
+                cont++;
+            }
+            if(i==y){
+                cont2++;
+            }
+            wordss[i+cont]=words[i+cont2];
+        }
+        printf("\n\nAl texto: %sSe le desplazo el caracter |%c|, que estaba en el indice %d, y tras moverlo de %d veces de %s quedo de la siguiente manera: %s\n\n",words,words[y],y,y1,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
+    }else{
+        printf("\n\nEl indice de la cadena es INVALIDO, ESTA FUERA DE RANGO\n");
+    }
 
+}
 //----
 
 //10.VALIDATE MAIL
@@ -395,6 +429,16 @@ int main() {
                 deleteRepeats();
                 break;
             case 9:
+                printf("\n HA SELECCIONADO LA OPCION 9: desplazamiento \n\nIngrese u oracion una palabra para desplazar un elemento de este\n");
+                fgets(words,500,stdin );
+                printf("\nIngrese el indice del caracter que desea desplazar (el indice empieza a contar desde 0 de izquierda a derecha)\n");
+                scanf("%i",&y);
+                printf("\nIngrese cuantas posiciones se desplazara el caracter\n");
+                scanf("%i",&y1);
+                fflush(stdin);
+                printf("\nIngrese hacia donde va a insertar el caracter (izquierda o derecha)\n");
+                scanf("%s",&x1);
+                displaceCharac(words,y,y1,strcmp("derecha",x1)==0?1:0);
                 break;
             case 10:
                 validateMail();
