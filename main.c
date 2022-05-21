@@ -138,8 +138,8 @@ void newYear(){
     int horas = res*(24/1);
     int minutos = res*(24/1)*(60/1);
 
-    printf("Restan:\n");
-    printf("Dias: %d \nhoras : %d \nMinutos : %d ", res,horas,minutos);
+    printf("\nRestan:\n");
+    printf("Dias: %d \nhoras: %d \nMinutos: %d ", res,horas,minutos);
     printf("para a%co nuevo.\n\n",164);
 
 
@@ -256,19 +256,16 @@ void displaceCharac(char words[500], int y, int y1, int rl) {
     int cont2=0;
     int aux;
     int ind=y1;
-    printf("1hola");
     if(((strlen(words)-1)>=y)&&(y>=0)){
         while(ind>=(strlen(words)-1)){
             ind=ind-(strlen(words)-1);
         }
-        printf("2hola");
         if(rl==1){
             aux=y>=ind?y-ind:((strlen(words)-1)-(ind-y));
         }else{
             aux=ind+y<(strlen(words)-1)?y+ind:((strlen(words)-1)-(ind+y));
         }
         printf("%d",aux);
-        printf("3hola");
         for (int i = 0; i < strlen(words); ++i) {
             if(i==aux){
                 wordss[i]=words[y];
