@@ -153,16 +153,24 @@ void fillCharac(char words[500], char x, int y, int rl) {
     char aux[1];
     int cont=0;
     aux[0]=x;
-    if(y>strlen(words))y=strlen(words)-1;
-    y=rl==1?strlen(words)-(y+1):y-1;
+    int ind = y;
+    if(ind>=strlen(words)-1){
+        while(ind>=strlen(words)-1){
+            ind=ind-(strlen(words)-1);
+        }
+    }
+    ind=rl==1?(strlen(words)-1)-(ind):ind-1;
+    if(ind<0){
+        ind=ind*-1;
+    }
     for (int i=0; i < strlen(words); i++) {
-        if(y==i){
+        if(ind==i){
             wordss[i]=aux[0];
             cont++;
         }
         wordss[i+cont]=words[i];
     }
-    printf("\n\nAl texto: %sSe le insertara el caracter |%c| en la posicion %d de %s quedando de la siguiente manera:\n%s\n\n",words,x,rl==1?-y+strlen(words)-1:y+1,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
+    printf("\n\nAl texto: %sSe le inserto el caracter |%c|  tras pasar %d veces de %s quedando de la siguiente manera:\n%s\n\n",words,x,y,rl==1?"derecha a izquierda":"izquierda a derecha",wordss);
 }
 //---------
 
