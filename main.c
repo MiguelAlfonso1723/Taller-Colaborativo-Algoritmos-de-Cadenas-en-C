@@ -381,6 +381,7 @@ int main() {
         char x;
         char x1[10];
         int y;
+        int y1;
         askMenu();
         scanf("%d",&opc);
         fflush(stdin);
