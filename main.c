@@ -384,8 +384,8 @@ int main() {
         fflush(stdin);
         switch (opc) {
             case 1:
-                break;
                 propName();
+                break;
             case 2:
                 searchChains();
                 break;
