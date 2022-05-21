@@ -213,7 +213,7 @@ void intersect(char words[500], char words2[500]) {
                 printf("||%c||, ", wordss[i]);
             }
         }
-        printf("\n%s",wordss);
+        printf("\nSolo las letras: %s",wordss);
     }else{
         printf("\n\nEn los textos: \n1.%s 2.%sNo tienen letras en comun",words,words2);
     }
@@ -264,6 +264,9 @@ void displaceCharac(char words[500], int y, int y1, int rl) {
             aux=y>=ind?y-ind:((strlen(words)-1)-(ind-y));
         }else{
             aux=ind+y<(strlen(words)-1)?y+ind:((strlen(words)-1)-(ind+y));
+            if(aux<0){
+                aux=aux*-1;
+            }
         }
         printf("%d",aux);
         for (int i = 0; i < strlen(words); ++i) {
