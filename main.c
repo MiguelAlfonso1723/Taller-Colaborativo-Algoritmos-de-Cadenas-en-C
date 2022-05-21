@@ -283,8 +283,8 @@ void displaceCharac(char words[500], int y, int y1, int rl) {
 //10.VALIDATE MAIL
 int validateFirstParams(char chainWords[20]) {
     int z = strlen(chainWords);
-    char atSing;
-    char dot;
+    char *atSing;
+    char *dot;
     int eval=0;
     for (int i = 0; i < z; i++) {
         dot = strchr(chainWords, '@');
@@ -302,9 +302,9 @@ int validateFirstParams(char chainWords[20]) {
 }
 int validateParams(char chainWords[20]){
     int z = strlen(chainWords);
-    char letterC;
-    char letterO;
-    char letterM;
+    char *letterC;
+    char *letterO;
+    char *letterM;
     int eval=0;
     for (int i = 0; i < z; i++) {
         letterC = strchr(chainWords, 'c');
@@ -318,8 +318,8 @@ int validateParams(char chainWords[20]){
             }
         }
     }
-    char letterU;
-    char letterS;
+    char *letterU;
+    char *letterS;
     for (int i = 0; i < z; i++) {
         letterU = strchr(chainWords, 'u');
         if (letterU != NULL) {
@@ -329,9 +329,9 @@ int validateParams(char chainWords[20]){
             }
         }
     }
-    char letterCO;
-    char letterOL;
-    char letterL;
+    char *letterCO;
+    char *letterOL;
+    char *letterL;
     for (int i = 0; i < z; i++) {
         letterCO = strchr(chainWords, 'c');
         if (letterCO != NULL) {
